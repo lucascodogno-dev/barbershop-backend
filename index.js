@@ -17,10 +17,11 @@ app.use(cors({
 
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigin,
-    methods: ['GET', 'POST'],
-    credentials: true,
-  },
+  origin: 'https://barbeariabiriguiteste.netlify.app',
+  methods: ['GET', 'POST'],
+  credentials: true
+},
+
 });
 
 
