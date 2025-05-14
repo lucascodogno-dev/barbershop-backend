@@ -7,11 +7,22 @@ const cors = require('cors');
 
 // Configuração do servidor Express
 const app = express();
+const allowedOrigin = process.env.CLIENT_URL || 'https://barbeariabiriguiteste.netlify.app';
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'https://barbeariabiriguiteste.netlify.app/', // Alterado para 5173, porta padrão do Vite
+  origin: allowedOrigin,
   methods: ['GET', 'POST'],
-  credentials: true
+  credentials: true,
 }));
+
+const io = new Server(server, {
+  cors: {
+    origin: allowedOrigin,
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
+});
+
 
 app.use(express.json());
 
@@ -19,13 +30,13 @@ app.use(express.json());
 const server = http.createServer(app);
 
 // Configuração do Socket.io
-const io = new Server(server, {
-  cors: {
-    origin: process.env.CLIENT_URL || 'https://barbeariabiriguiteste.netlify.app/', // Alterado para 5173
-    methods: ['GET', 'POST'],
-    credentials: true
-  }
-});
+// const io = new Server(server, {
+//   cors: {
+//     origin: process.env.CLIENT_URL || 'https://barbeariabiriguiteste.netlify.app', // Alterado para 5173
+//     methods: ['GET', 'POST'],
+//     credentials: true
+//   }
+// });
 
 // Rota básica para verificar se o servidor está funcionando
 app.get('/', (req, res) => {
