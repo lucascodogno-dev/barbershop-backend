@@ -1,21 +1,28 @@
 {
-  "name": "backend",
+  "name": "barbershop-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Servidor para o sistema de agendamento da barbearia",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lucascodogno-dev/barbershop-backend.git"
-  },
-  "keywords": [],
+  "keywords": [
+    "socket.io",
+    "express",
+    "barber",
+    "scheduling"
+  ],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/lucascodogno-dev/barbershop-backend/issues"
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "socket.io": "^4.7.1"
   },
-  "homepage": "https://github.com/lucascodogno-dev/barbershop-backend#readme"
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
