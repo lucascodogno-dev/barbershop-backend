@@ -8,6 +8,7 @@ const cors = require('cors');
 // Configuração do servidor Express
 const app = express();
 const allowedOrigin = process.env.CLIENT_URL || 'https://barbeariabiriguiteste.netlify.app';
+const server = http.createServer(app);
 
 app.use(cors({
   origin: allowedOrigin,
@@ -28,7 +29,6 @@ const io = new Server(server, {
 app.use(express.json());
 
 // Configuração do servidor HTTP
-const server = http.createServer(app);
 
 // Configuração do Socket.io
 // const io = new Server(server, {
