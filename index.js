@@ -117,6 +117,26 @@ io.on('connection', (socket) => {
     console.log(`Cliente desconectado: ${socket.id}`);
   });
 });
+socket.on('blocked-slot-added', (slot) => {
+  console.log('Horário bloqueado:', slot);
+  socket.broadcast.emit('blocked-slot-added', slot);
+});
+
+socket.on('blocked-slot-removed', (slot) => {
+  console.log('Horário desbloqueado:', slot);
+  socket.broadcast.emit('blocked-slot-removed', slot);
+});
+
+// ===== EVENTOS DE HORÁRIOS BLOQUEADOS =====
+// socket.on('blocked-slot-added', (slot) => {
+//   console.log('Horário bloqueado:', slot);
+//   socket.broadcast.emit('blocked-slot-added', slot);
+// });
+
+// socket.on('blocked-slot-removed', (slot) => {
+//   console.log('Horário desbloqueado:', slot);
+//   socket.broadcast.emit('blocked-slot-removed', slot);
+// });
 
 // Inicialização do servidor
 const PORT = process.env.PORT || 5000;
